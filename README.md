@@ -62,7 +62,7 @@ The system leverages RBAC to manage user permissions efficiently. By categorizin
 2. **User Control Panel**  
    After logging in, you can go to Settings to Create or Edit users and their roles.  
 
-   ![Settings](assets/settings.webp)
+   ![Settings](assets/settingss.webp)
 
 3. **Role Assignment**  
    Click on edit or add new user, to assign to one of the four roles. Each role has specific access permissions.  
