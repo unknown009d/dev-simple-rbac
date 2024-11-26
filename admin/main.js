@@ -273,8 +273,56 @@ const checkusername = (element, message_text, username = null) => {
     });
 };
 
+// For front-end security
+let securitySelector = 'input[type="text"], textarea';
+let secRegex = /[<>'"/\\;*`]/g;
+const blockUnsafeCharacters = () => {
+  // Get all input elements and text areas on the page
+  const inputs = document.querySelectorAll(securitySelector);
+  
+  inputs.forEach(input => {
+    input.addEventListener('input', (event) => {
+      // Replace unwanted characters by ignoring them
+      input.value = input.value.replace(secRegex, '');
+    });
+  });
+}
+function sanitizeInputWithHtmlEntities() {
+  // Get all input elements and text areas on the page
+  const inputs = document.querySelectorAll(securitySelector);
+  
+  inputs.forEach(input => {
+    input.addEventListener('input', (event) => {
+      // Replace unsafe characters with HTML entities
+      input.value = input.value.replace(secRegex, (match) => {
+        switch(match) {
+          case '<': return '&lt;';
+          case '>': return '&gt;';
+          case '\'': return '&apos;';
+          case '"': return '&quot;';
+          case '/': return '&#47;';
+          case '\\': return '&#92;';
+          case ';': return '&#59;';
+          case '(': return '&#40;';
+          case ')': return '&#41;';
+          case '{': return '&#123;';
+          case '}': return '&#125;';
+          case '=': return '&#61;';
+          case '&': return '&amp;';
+          case '!': return '&#33;';
+          case '?': return '&#63;';
+          case '%': return '&#37;';
+          default: return match;
+        }
+      });
+    });
+  });
+}
+
 // Main Function
 document.addEventListener("DOMContentLoaded", () => {
+  blockUnsafeCharacters();
+
   document.querySelector("main").classList.remove("load-animation");
   // Dashboard page reset
   if (document.getElementById("reset_logo"))

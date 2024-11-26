@@ -16,6 +16,18 @@ document.getElementById("openHam").addEventListener("click", (e) => {
 
 const tablinks = document.querySelectorAll(".tablink");
 
+const blockUnsafeCharacters = () => {
+  // Get all input elements and text areas on the page
+  const inputs = document.querySelectorAll('input, textarea');
+  
+  inputs.forEach(input => {
+    input.addEventListener('input', (event) => {
+      // Replace unwanted characters by ignoring them
+      input.value = input.value.replace(/[<>'"/\\]/g, '');
+    });
+  });
+}
+
 window.onload = () => {
   const loading_section = document.querySelectorAll(".load-animation");
   loading_section.forEach((element) => {
@@ -118,3 +130,4 @@ let observer = new IntersectionObserver((entries) => {
 const jobapply = () => {
   alert("Please contact directly with us for any job offering for now.");
 };
+

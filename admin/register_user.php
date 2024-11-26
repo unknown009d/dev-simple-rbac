@@ -1,6 +1,6 @@
 <?php
 $title = 'User Management';
-$active = -1;
+$active = 9;
 $pageCategory = "*";
 require_once 'header.php';
 
@@ -13,10 +13,10 @@ $stmt->execute();
 $pages_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $user_types = [
-    1 => "Admin",
-    2 => "Content Editor",
-    3 => "Manager",
-    4 => "Viewer",
+    1 => ["Admin", "Have all access and can edit everything."],
+    2 => ["Content Editor", "Have access to all the edit page title, description, images, etc."],
+    3 => ["Manager", "Have access to manage content those are updated frequently. Like Adding or Removing items (But doesn't allow page related changes)"],
+    4 => ["Viewer", "Have only access for viewing the jobs and applied candidates."],
 ];
 
 $username_current = "";
@@ -91,7 +91,7 @@ if ($editor) {
                                 <option class="dark:bg-slate-950 dark:text-white/80" value="" selected disabled hidden>-- Select User Type --</option>
                             <?php endif; ?>
                             <?php foreach (array_reverse($user_types, true) as $key => $value): ?>
-                                <option class="dark:bg-slate-950 dark:text-white/80" value="<?= $key ?>" <?= $key == $priority ? "selected" : "" ?>><?= $value ?></option>
+                                <option class="dark:bg-slate-950 dark:text-white/80" value="<?= $key ?>" <?= $key == $priority ? "selected" : "" ?> title="<?= $value[1] ?>"><?= $value[0] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

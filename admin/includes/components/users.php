@@ -16,7 +16,7 @@ if ($UAC <= 1) {
                             Browse the list of users or modify them.
                         </p>
                     </div>
-                    <a href="register_user.php" type="submit" class="flex gap-2 items-center text-sm px-6 py-2.5 font-medium tracking-wide text-blue-600 dark:text-blue-300 transition-all duration-300 transform rounded-full hover:bg-blue-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 ring-blue-600/60 ring-offset-2 dark:ring-blue-300 dark:ring-offset-gray-800">
+                    <a href="register_user" type="submit" class="flex gap-2 items-center text-sm px-6 py-2.5 font-medium tracking-wide text-blue-600 dark:text-blue-300 transition-all duration-300 transform rounded-full hover:bg-blue-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 ring-blue-600/60 ring-offset-2 dark:ring-blue-300 dark:ring-offset-gray-800">
                         Add a new user
                         <?= iPlus('1rem', 2.5) ?>
                     </a>
@@ -47,7 +47,7 @@ if ($UAC <= 1) {
                             <td class="px-6 py-4"><?= findLevel(intval($row['priority'])) ?></td>
                             <td class="px-6 py-4 flex items-center justify-center gap-2">
                                 <?php if (!$thisuser): ?>
-                                    <a href="register_user.php?type=<?= "edit" ?>&user=<?= base64UrlEncode($row['id']) ?>" class="h-8 w-8 flex justify-center items-center bg-yellow-500 hover:bg-yellow-400 focus:bg-yellow-500 active:bg-yellow-500 p-2 rounded-full text-white transition-all duration-300" title="Edit item">
+                                    <a href="register_user?type=<?= "edit" ?>&user=<?= base64UrlEncode($row['id']) ?>" class="h-8 w-8 flex justify-center items-center bg-yellow-500 hover:bg-yellow-400 focus:bg-yellow-500 active:bg-yellow-500 p-2 rounded-full text-white transition-all duration-300" title="Edit item">
                                         <?= iPen('1.2rem') ?>
                                     </a>
                                     <form action="modules/userdel.php?id=<?= base64UrlEncode($row['id']) ?>" id="form_delete_item_<?= $count ?>" method="POST">
