@@ -54,7 +54,7 @@ The system leverages RBAC to manage user permissions efficiently. By categorizin
 ### Step-by-Step Instructions
 
 1. **Login Page**  
-   First, access the login page where you can enter your credentials. [Live Demo](https://cms.avanttechnoinfra.com/admin)
+   First, access the login page where you can enter your credentials. [Live Demo](https://cms.xcellentcomputel.in/admin)
 
    ![Login Page](assets/LoginPage.webp)
    > Username: test <br> Password: 1234
